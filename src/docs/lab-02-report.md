@@ -46,6 +46,10 @@
 ```tsx
 <WorkoutList workouts={workouts} />
 
+```
+<WorkoutList workouts={workouts} />
+
+
 ## 7. Последовательность работы страницы
 • При первом отображении `workouts` пустой, а `isLoading` равен `true`.
 • Пользователь видит заголовок «Загрузка данных...».
