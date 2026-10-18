@@ -45,3 +45,18 @@
 
 ```tsx
 <WorkoutList workouts={workouts} />
+
+## 7. Последовательность работы страницы
+• При первом отображении `workouts` пустой, а `isLoading` равен `true`.
+• Пользователь видит заголовок «Загрузка данных...».
+• `useEffect` запускает `fetchWorkouts`.
+• После Promise вызывается `setWorkouts(data)`, затем `isLoading` переключается в `false`.
+• React повторно отображает компонент и показывает статистику и список карточек.
+
+## 8. Проверка результата
+Проект проверен командами:
+```bash
+npm run build
+
+## 9.
+Удалённый репозиторий: https://github.com/Kuznetcov-Vlad/workout-tracker
