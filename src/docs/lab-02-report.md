@@ -62,5 +62,6 @@
 ```bash
 npm run build
 
+```
 ## 9.
 Удалённый репозиторий: https://github.com/Kuznetcov-Vlad/workout-tracker
