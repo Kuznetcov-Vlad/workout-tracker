@@ -63,5 +63,5 @@
 npm run build
 
 ```
-## 9.
+## 9. Итог и ссылка
 Удалённый репозиторий: https://github.com/Kuznetcov-Vlad/workout-tracker
