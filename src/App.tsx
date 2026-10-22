@@ -46,8 +46,11 @@ function App() {
             <h2>Все тренировки</h2>
             <WorkoutList workouts={workouts} />
           </section>
+                {/* Добавляем блок с практикой */}
+      <Practice />
         </>
       )}
+      import { Practice } from './practice/Practice';
     </div>
   );
 }
