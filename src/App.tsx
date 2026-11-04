@@ -1,50 +1,25 @@
-import { useState, useEffect } from 'react';
-import { fetchWorkouts } from './data/mockApi';
-import type { Workout } from './data/mockWorkouts';
-import { Header } from './components/Header';
-import { WorkoutList } from './components/WorkoutList';
-import { RouterPractice } from './router-practice/RouterPractice'; // <-- ИМПОРТ ЗДЕСЬ
+import { Routes, Route } from 'react-router-dom';
+import { Layout } from './Layout';
+import { DashboardPage } from './pages/DashboardPage';
+import { WorkoutsPage } from './pages/WorkoutsPage';
+import { WorkoutDetailsPage } from './pages/WorkoutDetailsPage';
+import { NewWorkoutPage } from './pages/NewWorkoutPage';
+import { StatsPage } from './pages/StatsPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 import './App.css';
 
 function App() {
-  const [workouts, setWorkouts] = useState<Workout[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    fetchWorkouts().then((data) => {
-      setWorkouts(data);
-      setIsLoading(false);
-    });
-  }, []);
-
-  const completedCount = workouts.filter(w => w.isCompleted).length;
-  const totalMinutes = workouts.filter(w => w.isCompleted).reduce((sum, w) => sum + w.duration, 0);
-
   return (
-    <div className="App">
-      <Header />
-
-      {isLoading ? (
-        <h2 style={{ textAlign: 'center', marginTop: '50px' }}>Загрузка данных...</h2>
-      ) : (
-        <>
-          <section className="summary">
-            <h2>Общая сводка</h2>
-            <p>Всего тренировок: <strong>{workouts.length}</strong></p>
-            <p>Завершено: <strong>{completedCount}</strong></p>
-            <p>Общее время: <strong>{totalMinutes} мин</strong></p>
-          </section>
-
-          <section className="list-section">
-            <h2>Все тренировки</h2>
-            <WorkoutList workouts={workouts} />
-          </section>
-        </>
-      )}
-
-      {/* ВОТ ЗДЕСЬ ДОЛЖЕН БЫТЬ КОМПОНЕНТ ПРАКТИКИ */}
-      <RouterPractice />
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<DashboardPage />} />
+        <Route path="workouts" element={<WorkoutsPage />} />
+        <Route path="workouts/new" element={<NewWorkoutPage />} />
+        <Route path="workouts/:id" element={<WorkoutDetailsPage />} />
+        <Route path="stats" element={<StatsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 }
 
