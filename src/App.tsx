@@ -1,3 +1,4 @@
+import { ContextPractice } from './context-practice/ContextPractice';
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from './Layout';
 import { DashboardPage } from './pages/DashboardPage';
@@ -18,6 +19,8 @@ function App() {
         <Route path="workouts/:id" element={<WorkoutDetailsPage />} />
         <Route path="stats" element={<StatsPage />} />
         <Route path="*" element={<NotFoundPage />} />
+                {/* Практика Context (открывается по адресу /practice-context) */}
+        <Route path="/practice-context/*" element={<ContextPractice />} />
       </Route>
     </Routes>
   );
